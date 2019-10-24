@@ -3,13 +3,13 @@ import java.io.*;
 
 public class Sistemas
 {
-	protected Matriz
+	protected Matriz sistema;
 	protected int qtdEquacoes;
 
-	public Matriz(double[][] sistema)
+	public Sistemas(Matriz sistema)
 	{
-		this.elem = new double[sistema.length][sistema[0].length]
-		this.qtdEquacoes = sistema.length;
+		this.sistema = sistema;
+		this.qtdEquacoes = sitema.getLinhas();
 	}
 
     public boolean isSolucionavel() // divisões
@@ -19,8 +19,8 @@ public class Sistemas
 
 	public boolean temZeroDiag()
 	{
-		for(int linha = 0; linha < qtdEquacoes; linha++)
-			if(this.elem[linha][linha] == 0)
+		for(int linha = 0; linha < this.qtdEquacoes; linha++)
+			if(this.sistema.getValor(linha, linha) == 0)
 				return true;
 		return false;
 	}
@@ -32,28 +32,32 @@ public class Sistemas
 
 	public void resolver()
 	{
-		for(int i = 0; i < qtdEquacoes; i++)
+		for(int i = 0; i < this.qtdEquacoes; i++)
 			this.setZerosNaColuna(i);
 	}
 
 	public void setZerosColuna(int col)
 	{
+		double x = this.sistema.getValor(col,col);
+
 		// verifica se o valor da diagonal principal é 1
-		if(this.elem[col][col] != 1.0)
+		if(x != 1.0)
 		{
-			double x = this.elem[col][col];
-			for(int coluna = 0; coluna < qtdEquacoes + 1; coluna++)
-				this.elem[col][coluna] = this.elem[col][coluna] / x;
+			for(int coluna = 0; coluna < this.qtdEquacoes + 1; coluna++)
+				this.sistema.setValor(col,coluna, this.sistema.getValor(col,coluna) / x);
 		}
 
 		// deixa toda a coluna, com excecao do valor pertecente a diagonal, com 0
-		for(int linha = 0; linha < qtdEquacoes; linha++)
+		for(int linha = 0; linha < this.qtdEquacoes; linha++)
 		{
-			double valor = this.elem[linha][col];
-			if(valor != 0 && valor != this.elem[col][col])
+			double valor = this.sistema.getValor(linha,col);
+			if(valor != 0 && valor != this.sistema.getValor(col,col))
 			{
 				for(int coluna = 0; coluna < qtdEquacoes+1; coluna++)
-					this.elem[linha][coluna] = this.elem[col][coluna] * -valor;
+				{
+				 double val = this.sistema.getValor(linha,coluna) + (this.sistema.getValor(col,coluna) * -valor);
+				 this.sistema.setValor(linha,coluna, val);
+				}
 			}
 		}
 	}
@@ -61,9 +65,9 @@ public class Sistemas
 	public String resultado()
 	{
 		String ret = "";
-		for(int i = 0; i < qtdEquacoes; i++)
+		for(int i = 0; i < this.qtdEquacoes; i++)
 		{
-			ret += i+"a incognita: " + this.elem[qtdEquacoes][qtdEquacoes+1];
+			ret += i+"a incognita: " + this.sistema.getValor(i,this.qtdEquacoes+1);
 		}
 	}
 }

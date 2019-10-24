@@ -12,22 +12,32 @@ public class Leitor
 		                           arq));
 	}
 
-	 public double[][] getSistema(int nmr)
+	 public Matriz[] getSistemas() // retorna uma matriz de sistemas
      {
-		double elem[][];
+		Matriz ret[] = null;
+		int i = 0;
+
 		try
 		{
-			for(int i = 0; i < nmr; i++)
+			while(arquivo.readLine() != null)
 			{
-				int qtdEquacoes = Integer.parseInt(arquivo.readLine);
-				StringTokenizer quebrador = new StringTokenizer (arquivo.readLine());
-				// descartar linhas até chegar em nmr-1;
+				int qtdEquacoes = Integer.parseInt(arquivo.readLine());
+
+				Matriz matriz = new Matriz(qtdEquacoes,qtdEquacoes+1);
+
+				for(int linha = 0; linha < qtdEquacoes; linha++)
+				{
+					StringTokenizer quebrador = new StringTokenizer (arquivo.readLine());
+					for(int coluna = 0; coluna < qtdEquacoes+1; coluna++)
+						matriz.setValor(linha, coluna, Double.parseDouble(quebrador.nextToken()));
+				}
+				ret[i] = matriz;
+				i++;
 			}
 		}
+		catch(Exception ex)
+		{}
+
+		return ret;
      }
-
-    public boolean acabouArquivo()
-    {
-
-	}
 }

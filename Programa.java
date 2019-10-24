@@ -12,22 +12,11 @@ public class Programa
 			String arq = reader.readLine();
 			Leitor leitor = new Leitor(arq);
 
-			while(!(leitor.acabouArquivo))
+			Matriz[] matrizSistemas = leitor.getSistemas();
+			for(int i = 0; i < matrizSistemas.length; i++)
 			{
-				Matriz mat = new Matriz(leitor.getSistema(nmr));
-				if(!(mat.isSolucionavel))
-				{
-					System.out.println("Sistema sem solução!\n\n");
-				}
-				else
-				{
-				   if(mat.temZeroDiag())
-						mat.trocarOrdem();
-					mat.resolver();
-					System.out.println(mat.resultado);
-			    }
-
-			    nmr++;
+				Sistemas sis = new Sistemas(matrizSistemas[i]);
+				// ...
 			}
 		}
 		catch(Exception ex)
