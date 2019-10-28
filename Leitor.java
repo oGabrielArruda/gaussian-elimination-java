@@ -16,10 +16,12 @@ public class Leitor
      {
 		Matriz ret[] = null;
 		int i = 0;
-		while(arquivo.readLine() != null)
-		{
-			int qtdEquacoes = Integer.parseInt(arquivo.readLine());
 
+		String linhaArq = arquivo.readLine();
+
+		while(!linhaArq.equals(""))
+		{
+			int qtdEquacoes = Integer.parseInt(linhaArq);
 			Matriz matriz = new Matriz(qtdEquacoes,qtdEquacoes+1);
 
 			for(int linha = 0; linha < qtdEquacoes; linha++)
@@ -28,13 +30,14 @@ public class Leitor
 				int coluna = 0;
 				while(quebrador.hasMoreTokens())
 				{
-					Double valor = Double.parseDouble(quebrador.nextToken())
+					Double valor = Double.parseDouble(quebrador.nextToken());
 					matriz.setValor(linha, coluna, valor);
 					coluna++;
 				}
 			}
 			ret[i] = matriz;
 			i++;
+			linhaArq = arquivo.readLine();
 		}
 		return ret;
      }
