@@ -32,4 +32,19 @@ public class Matriz
 	{
 		return this.elem.length;
 	}
+
+	public String toString()
+	{
+		String ret = "";
+		for(int linha = 0; linha < this.linhas; linha++)
+		{
+			for(int coluna = 0; coluna < this.colunas; coluna++)
+			{
+				ret+= this.elem[linha][coluna] + " ";
+			}
+			ret+="\n";
+		}
+
+		return ret;
+	}
 }

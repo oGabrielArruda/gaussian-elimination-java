@@ -14,6 +14,7 @@ public class Programa
 
 			Leitor leitor = new Leitor(arq);
 			List<Matriz> sistemas = leitor.getSistemas();
+
 			for(int i = 0; i < sistemas.size(); i++)
 			{
 				Sistemas sis = new Sistemas(sistemas.get(i));
