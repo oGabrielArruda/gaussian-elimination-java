@@ -16,12 +16,21 @@ public class Programa
 			for(int i = 0; i < matrizSistemas.length; i++)
 			{
 				Sistemas sis = new Sistemas(matrizSistemas[i]);
+				if(!sis.isSolucionavel())
+				{
+					System.out.println("Sistema sem solução!");
+					continue;
+				}
 
+				if(sis.temZeroDiag())
+					sis.trocarOrdem();
+				sis.resolver();
+				System.out.println(sis.resultado());
 			}
 		}
 		catch(Exception ex)
 		{
-
+			System.out.println("Erro: " + ex.getMessage());
 		}
     }
 }
