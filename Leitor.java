@@ -14,19 +14,22 @@ public class Leitor
 
 	 public Matriz[] getSistemas() throws Exception // retorna uma matriz de sistemas
      {
-		Matriz ret[] = null;
+		Matriz ret[] = new Matriz[10];
 		int i = 0;
 
-		String linhaArq = arquivo.readLine();
-
-		while(!linhaArq.equals(""))
+		while(arquivo.ready())
 		{
-			int qtdEquacoes = Integer.parseInt(linhaArq);
+			int qtdEquacoes = Integer.parseInt(arquivo.readLine());
+
 			Matriz matriz = new Matriz(qtdEquacoes,qtdEquacoes+1);
 
 			for(int linha = 0; linha < qtdEquacoes; linha++)
 			{
-				StringTokenizer quebrador = new StringTokenizer (arquivo.readLine());
+				String l = arquivo.readLine();
+				if(l.equals(""))
+					l = arquivo.readLine();
+
+				StringTokenizer quebrador = new StringTokenizer(l);
 				int coluna = 0;
 				while(quebrador.hasMoreTokens())
 				{
@@ -37,7 +40,6 @@ public class Leitor
 			}
 			ret[i] = matriz;
 			i++;
-			linhaArq = arquivo.readLine();
 		}
 		return ret;
      }
