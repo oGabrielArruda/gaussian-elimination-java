@@ -1,6 +1,7 @@
 import java.util.StringTokenizer;
 import java.io.*;
-
+import java.util.List;
+import java.util.ArrayList;
 public class Leitor
 {
 	private BufferedReader arquivo;
@@ -12,9 +13,9 @@ public class Leitor
 		                           arq));
 	}
 
-	 public Matriz[] getSistemas() throws Exception // retorna uma matriz de sistemas
+	 public List<Matriz> getSistemas() throws Exception // retorna uma matriz de sistemas
      {
-		Matriz ret[] = new Matriz[10];
+		List<Matriz> lista = new ArrayList<Matriz>();
 		int i = 0;
 
 		while(arquivo.ready())
@@ -38,9 +39,9 @@ public class Leitor
 					coluna++;
 				}
 			}
-			ret[i] = matriz;
+			lista.add(matriz);
 			i++;
 		}
-		return ret;
+		return lista;
      }
 }
