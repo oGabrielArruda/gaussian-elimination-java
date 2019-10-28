@@ -9,15 +9,15 @@ public class Sistemas
 	public Sistemas(Matriz sistema)
 	{
 		this.sistema = sistema;
-		this.qtdEquacoes = sitema.getLinhas();
+		this.qtdEquacoes = sistema.getLinhas();
 	}
 
     public boolean isSolucionavel() // divisões
     {
-
+		return true;
 	}
 
-	public boolean temZeroDiag()
+	public boolean temZeroDiag() throws Exception
 	{
 		for(int linha = 0; linha < this.qtdEquacoes; linha++)
 			if(this.sistema.getValor(linha, linha) == 0)
@@ -30,13 +30,7 @@ public class Sistemas
 
 	}
 
-	public void resolver()
-	{
-		for(int i = 0; i < this.qtdEquacoes; i++)
-			this.setZerosNaColuna(i);
-	}
-
-	public void setZerosColuna(int col)
+	public void setZerosColuna(int col) throws Exception
 	{
 		double x = this.sistema.getValor(col,col);
 
@@ -63,12 +57,24 @@ public class Sistemas
 		}
 	}
 
+	public void resolver() throws Exception
+	{
+			for(int i = 0; i < this.qtdEquacoes; i++)
+				this.setZerosColuna(i);
+	}
+
 	public String resultado()
 	{
 		String ret = "";
-		for(int i = 0; i < this.qtdEquacoes; i++)
+		try
 		{
-			ret += i+"a incognita: " + this.sistema.getValor(i,this.qtdEquacoes+1);
+			for(int i = 0; i < this.qtdEquacoes; i++)
+			{
+				ret += i+"a incognita: " + this.sistema.getValor(i,this.qtdEquacoes+1);
+			}
 		}
+		catch(Exception e)
+		{} // sei que não vai dar erro
+		return ret;
 	}
 }
