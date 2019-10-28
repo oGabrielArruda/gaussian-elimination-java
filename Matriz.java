@@ -47,4 +47,23 @@ public class Matriz
 
 		return ret;
 	}
+
+	public boolean equals(Object obj)
+	{
+		if(this == obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(this.getClass() != obj.getClass())
+			return false;
+		Matriz mat = (Matriz)obj;
+
+		if(this.colunas != mat.colunas || this.linhas != mat.linhas)
+			return false;
+		for(int linha = 0; linhas < this.linhas; linha++)
+			for(int coluna = 0; coluna < this.colunas; coluna++)
+				if(this.elem[linha][coluna] != mat.elem[linha][coluna])
+					return false;
+		return true;
+	}
 }
