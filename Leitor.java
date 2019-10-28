@@ -25,8 +25,13 @@ public class Leitor
 			for(int linha = 0; linha < qtdEquacoes; linha++)
 			{
 				StringTokenizer quebrador = new StringTokenizer (arquivo.readLine());
-				for(int coluna = 0; coluna < qtdEquacoes+1; coluna++)
-					matriz.setValor(linha, coluna, Double.parseDouble(quebrador.nextToken()));
+				int coluna = 0;
+				while(quebrador.hasMoreTokens())
+				{
+					Double valor = Double.parseDouble(quebrador.nextToken())
+					matriz.setValor(linha, coluna, valor);
+					coluna++;
+				}
 			}
 			ret[i] = matriz;
 			i++;
