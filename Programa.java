@@ -1,5 +1,6 @@
 import java.util.StringTokenizer;
 import java.io.*;
+import java.util.List;
 
 public class Programa
 {
@@ -12,10 +13,10 @@ public class Programa
 			String arq = reader.readLine();
 
 			Leitor leitor = new Leitor(arq);
-			Matriz[] matrizSistemas = leitor.getSistemas();
-			for(int i = 0; i < matrizSistemas.length; i++)
+			List<Matriz> sistemas = leitor.getSistemas();
+			for(int i = 0; i < sistemas.size(); i++)
 			{
-				Sistemas sis = new Sistemas(matrizSistemas[i]);
+				Sistemas sis = new Sistemas(sistemas.get(i));
 				if(!sis.isSolucionavel())
 				{
 					System.out.println("Sistema sem solução!");
