@@ -66,4 +66,16 @@ public class Matriz
 					return false;
 		return true;
 	}
+
+	public int hashCode()
+	{
+		int ret = 357;
+		ret = ret*7 + new Integer(this.linhas).hashCode();
+		ret = ret*7 + new Integer(this.colunas).hashCode();
+
+		for(int linha = 0; linha < this.linhas; linha++)
+			for(int coluna = 0; coluna < this.colunas; coluna++)
+				ret = ret*7 + new Double(this.elem[linha][coluna]).hashCode();
+		return ret;
+	}
 }
