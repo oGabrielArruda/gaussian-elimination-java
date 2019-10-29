@@ -63,14 +63,14 @@ public class Resolvedor
 				this.setZerosColuna(i);
 	}
 
-	public String resultado()
+	public String resultado() throws Exception
 	{
 		String ret = "";
 		try
 		{
 			for(int i = 0; i < this.qtdEquacoes; i++)
 			{
-				ret += i+"a incognita: " + this.sistema.getValor(i,this.qtdEquacoes+1);
+				ret += i+1 + "a incognita: " + this.sistema.getValor(i,this.qtdEquacoes) + "\n";
 			}
 		}
 		catch(Exception e)

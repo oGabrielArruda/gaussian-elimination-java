@@ -23,7 +23,7 @@ public class Matriz
 
 	public double getValor(int linha, int coluna) throws Exception
 	{
-		if(linha < 0 || coluna < 0)
+		if(linha < 0 || coluna < 0 || linha > this.linhas - 1 || coluna > this.colunas - 1)
 			throw new Exception("Espaço inválido!");
 		return this.elem[linha][coluna];
 	}

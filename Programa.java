@@ -19,7 +19,7 @@ public class Programa
 			{
 				Resolvedor resolvedor = new Resolvedor(sistemas.get(i));
 				System.out.println(sistemas.get(i));
-				if(!resolvedor.isSolucionavel())
+			/*	if(!resolvedor.isSolucionavel())
 				{
 					System.out.println("Sistema sem solução!");
 					continue;
@@ -27,7 +27,7 @@ public class Programa
 
 				if(resolvedor.temZeroDiag())
 					resolvedor.trocarOrdem();
-				resolvedor.resolver();
+				resolvedor.resolver();*/
 				System.out.println(resolvedor.resultado());
 			}
 		}
