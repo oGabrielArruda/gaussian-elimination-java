@@ -17,17 +17,18 @@ public class Programa
 
 			for(int i = 0; i < sistemas.size(); i++)
 			{
-				Sistemas sis = new Sistemas(sistemas.get(i));
-				if(!sis.isSolucionavel())
+				Resolvedor resolvedor = new Resolvedor(sistemas.get(i));
+				System.out.println(sistemas.get(i));
+				if(!resolvedor.isSolucionavel())
 				{
 					System.out.println("Sistema sem solução!");
 					continue;
 				}
 
-				if(sis.temZeroDiag())
-					sis.trocarOrdem();
-				sis.resolver();
-				System.out.println(sis.resultado());
+				if(resolvedor.temZeroDiag())
+					resolvedor.trocarOrdem();
+				resolvedor.resolver();
+				System.out.println(resolvedor.resultado());
 			}
 		}
 		catch(Exception ex)

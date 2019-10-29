@@ -1,12 +1,12 @@
 import java.util.StringTokenizer;
 import java.io.*;
 
-public class Sistemas
+public class Resolvedor
 {
 	protected Matriz sistema;
 	protected int qtdEquacoes;
 
-	public Sistemas(Matriz sistema)
+	public Resolvedor(Matriz sistema)
 	{
 		this.sistema = sistema;
 		this.qtdEquacoes = sistema.getLinhas();
