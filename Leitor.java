@@ -21,16 +21,11 @@ public class Leitor
 
 	}
 
-	 public List<Matriz> getSistemas() throws Exception // retorna uma matriz de sistemas
+	 public double[][] getSistema() throws Exception // retorna uma matriz
      {
-		List<Matriz> lista = new ArrayList<Matriz>();
-		int i = 0;
-
-		while(arquivo.ready())
-		{
 			int qtdEquacoes = Integer.parseInt(arquivo.readLine());
 
-			Matriz matriz = new Matriz(qtdEquacoes,qtdEquacoes+1);
+			double[][] ret = new double[qtdEquacoes][qtdEquacoes+1];
 
 			for(int linha = 0; linha < qtdEquacoes; linha++)
 			{
@@ -42,14 +37,10 @@ public class Leitor
 				int coluna = 0;
 				while(quebrador.hasMoreTokens())
 				{
-					Double valor = Double.parseDouble(quebrador.nextToken());
-					matriz.setValor(linha, coluna, valor);
+					ret[linha][coluna] = Double.parseDouble(quebrador.nextToken());
 					coluna++;
 				}
 			}
-			lista.add(matriz);
-			i++;
-		}
-		return lista;
+			return ret;
      }
 }
