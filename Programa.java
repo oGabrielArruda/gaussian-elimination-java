@@ -8,9 +8,8 @@ public class Programa
     {
 		try
 		{
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Digite o nome do seu arquivo!");
-			String arq = reader.readLine();
+			String arq = Teclado.getUmString();
 
 			Leitor leitor = new Leitor(arq);
 
