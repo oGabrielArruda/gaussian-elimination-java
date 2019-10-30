@@ -13,6 +13,14 @@ public class Leitor
 		                           arq));
 	}
 
+	public boolean fimDoArquivo() throws Exception
+	{
+		if(this.arquivo == null)
+			throw new Exception("Arquivo nulo");
+		return !this.arquivo.ready();
+
+	}
+
 	 public List<Matriz> getSistemas() throws Exception // retorna uma matriz de sistemas
      {
 		List<Matriz> lista = new ArrayList<Matriz>();
