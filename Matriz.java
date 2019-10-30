@@ -4,13 +4,14 @@ public class Matriz
 	protected int linhas;
 	protected int colunas;
 
-	public Matriz(int linhas, int colunas) throws Exception
+	public Matriz(double[][] matriz) throws Exception
 	{
-		if(linhas < 0 || colunas < 0)
-			throw new Exception("Espaço inválido!");
-		this.linhas = linhas;
-		this.colunas = colunas;
-		elem = new double[linhas][colunas];
+		if(matriz == null)
+			throw new Exception("Matriz nula");
+
+		this.elem = matriz;
+		this.linhas = matriz.length;
+		this.colunas = matriz[0].length;
 	}
 
 	public void setValor(int linha, int coluna, double valor) throws Exception
