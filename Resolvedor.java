@@ -17,17 +17,31 @@ public class Resolvedor
 		return true;
 	}
 
-	public boolean temZeroDiag() throws Exception
-	{
-		for(int linha = 0; linha < this.qtdEquacoes; linha++)
-			if(this.sistema.getValor(linha, linha) == 0)
-				return true;
-		return false;
-	}
 
-	public void trocarOrdem()
+	public void tirarZeroDiag() throws Exception
 	{
-
+		try
+		{
+			for(int linha = 0; linha < this.qtdEquacoes; linha++)
+				if(this.sistema.getValor(linha, linha) == 0)
+				{
+					double valor = 0;
+					int outraLinha = 0;
+					for(int i = 0; i < this.qtdEquacoes; i++)
+					{
+						valor = this.sistema.getValor(i, linha);
+						if(valor == 0)
+							continue;
+						outraLinha = i;
+						break;
+					}
+					this.sistema.setValor(outraLinha, linha, valor);
+				}
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro ao trocar valores");
+		}
 	}
 
 	public void setZerosColuna(int col) throws Exception
