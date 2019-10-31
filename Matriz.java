@@ -1,4 +1,4 @@
-public class Matriz
+public class Matriz implements Cloneable
 {
 	protected double elem[][];
 	protected int linhas;
@@ -77,6 +77,28 @@ public class Matriz
 		for(int linha = 0; linha < this.linhas; linha++)
 			for(int coluna = 0; coluna < this.colunas; coluna++)
 				ret = ret*7 + new Double(this.elem[linha][coluna]).hashCode();
+		return ret;
+	}
+
+	public Matriz(Matriz modelo) throws Exception
+	{
+		if (modelo == null)
+			throw new Exception("Parametro inválido");
+
+		this.elem = modelo.elem;
+		this.linhas = modelo.linhas;
+		this.colunas = modelo.colunas;
+	}
+
+	public Object clone()
+	{
+		Matriz ret = null;
+		try
+		{
+			ret = new Matriz(this);
+		}
+		catch(Exception erro)
+		{ }
 		return ret;
 	}
 }
