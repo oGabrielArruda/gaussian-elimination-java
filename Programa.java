@@ -18,16 +18,14 @@ public class Programa
 				Matriz sistema = new Matriz(leitor.getSistema());
 				Resolvedor resolvedor = new Resolvedor(sistema);
 
-			/*	if(!resolvedor.isSolucionavel())
+				if(!resolvedor.isSolucionavel())
 				{
 					System.out.println("Sistema sem solução!");
 					continue;
 				}
-
-				if(resolvedor.temZeroDiag())
-					resolvedor.trocarOrdem();
-				resolvedor.resolver();*/
-				System.out.println(resolvedor.resultado());
+				resolvedor.tirarZeroDiag();
+				//resolvedor.resolver();
+				System.out.println(sistema);
 			}
 		}
 		catch(Exception ex)

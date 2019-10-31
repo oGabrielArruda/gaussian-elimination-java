@@ -80,8 +80,6 @@ public class Matriz implements Cloneable
 		return ret;
 	}
 
-
-
 	public Matriz(Matriz modelo) throws Exception
 	{
 		if (modelo == null)

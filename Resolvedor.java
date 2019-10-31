@@ -35,7 +35,8 @@ public class Resolvedor
 						outraLinha = i;
 						break;
 					}
-					this.sistema.setValor(outraLinha, linha, valor);
+					this.sistema.setValor(outraLinha, linha, 0);
+					this.sistema.setValor(linha, linha, valor);
 				}
 		}
 		catch(Exception ex)

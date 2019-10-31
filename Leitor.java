@@ -18,7 +18,6 @@ public class Leitor
 		if(this.arquivo == null)
 			throw new Exception("Arquivo nulo");
 		return !this.arquivo.ready();
-
 	}
 
 	 public double[][] getSistema() throws Exception // retorna uma matriz
