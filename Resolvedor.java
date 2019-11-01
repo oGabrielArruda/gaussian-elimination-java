@@ -12,34 +12,35 @@ public class Resolvedor
 		this.qtdEquacoes = sistema.getLinhas();
 	}
 
-    public boolean isSolucionavel() // divisões
+    public boolean isSolucionavel() throws Exception // divisões
     {
-		double[] aux = new double[this.qtdEquacoes];
-		double[][] mat = sistema.getMatriz();
-
-		int vezesEncontradas = 1;
-		double primeiroValor = 0;
-
-		for (int i = 0; i < this.qtdEquacoes; i++)
+		for(int linha = 0; linha < this.qtdEquacoes-1; linha++)
 		{
-			int somatoria = this.qtdEquacoes - i;
-			for (int k = 0; k < somatoria; i++)
+			for(int outraLinha = linha+1; outraLinha < this.qtdEquacoes; outraLinha++)
 			{
-				for (int j = 0; j < this.qtdEquacoes; i++)
+				double[] jaFoi = new double[this.qtdEquacoes];
+				for(int coluna = 0; coluna < this.qtdEquacoes; coluna++)
 				{
-					int linhaDeBaixo = i + k;
-					//aux[j] = sistema.getValor(i, j) / sistema.getValor(linhaDeBaixo, j); *TENTATIVA FALHA*
-					aux[j] = mat[i][j] / mat[linhaDeBaixo][j];
+					try
+					{
+						double valor = this.sistema.getValor(linha, coluna) / this.sistema.getValor(outraLinha,coluna);
+						jaFoi[coluna] = valor;
+					}
+					catch(Exception ex)
+					{
+						throw new Exception("Problema ao verificar se é solucionável");
+					}
 				}
-				primeiroValor = aux[0];
-				for (int vezes = 0; vezes < this.qtdEquacoes; i++)
-				{
-					if (aux[vezes] == primeiroValor)
-						vezesEncontradas++;
+
+				double primeiroValor = jaFoi[0];
+				int qtsVezes = 1;
+				for(int i = 1; i < jaFoi.length; i++) // verifica se as divisões tiveram
+				{									  // o mesmo resultado
+					if(primeiroValor == jaFoi[i])
+						qtsVezes++;
 				}
-				if (vezesEncontradas == this.qtdEquacoes)
+				if(qtsVezes == jaFoi.length)
 					return false;
-				vezesEncontradas = 1;
 			}
 		}
 		return true;

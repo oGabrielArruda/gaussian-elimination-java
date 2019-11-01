@@ -17,14 +17,13 @@ public class Programa
 			{
 				Matriz sistema = new Matriz(leitor.getSistema());
 				Resolvedor resolvedor = new Resolvedor(sistema);
-
 				if(!resolvedor.isSolucionavel())
 				{
 					System.out.println("Sistema sem solução!");
 					continue;
 				}
 				resolvedor.tirarZeroDiag();
-				//resolvedor.resolver();
+				resolvedor.resolver();
 				System.out.println(sistema);
 			}
 		}
