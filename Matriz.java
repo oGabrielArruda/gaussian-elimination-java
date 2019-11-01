@@ -34,6 +34,11 @@ public class Matriz implements Cloneable
 		return this.elem.length;
 	}
 
+	public double[][] getMatriz()
+	{
+		return this.elem;
+	}
+
 	public String toString()
 	{
 		String ret = "";

@@ -14,6 +14,33 @@ public class Resolvedor
 
     public boolean isSolucionavel() // divisões
     {
+		double[] aux = new double[this.qtdEquacoes];
+		double[][] mat = sistema.getMatriz();
+
+		int vezesEncontradas = 1;
+		double primeiroValor = 0;
+
+		for (int i = 0; i < this.qtdEquacoes; i++)
+		{
+			int somatoria = this.qtdEquacoes - i;
+			for (int k = 0; k < somatoria; i++)
+			{
+				for (int j = 0; j < this.qtdEquacoes; i++)
+				{
+					int linhaDeBaixo = i + k;
+					//aux[j] = sistema.getValor(i, j) / sistema.getValor(linhaDeBaixo, j); *TENTATIVA FALHA*
+					aux[j] = mat[i][j] / mat[linhaDeBaixo][j];
+				}
+				primeiroValor = aux[0];
+				for (int vezes = 0; vezes < this.qtdEquacoes; i++)
+				{
+					if (aux[vezes] == primeiroValor)
+						vezesEncontradas++;
+				}
+				if (vezesEncontradas == this.qtdEquacoes)
+					return false;
+			}
+		}
 		return true;
 	}
 
