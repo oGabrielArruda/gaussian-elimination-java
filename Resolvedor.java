@@ -39,6 +39,7 @@ public class Resolvedor
 				}
 				if (vezesEncontradas == this.qtdEquacoes)
 					return false;
+				vezesEncontradas = 1;
 			}
 		}
 		return true;
