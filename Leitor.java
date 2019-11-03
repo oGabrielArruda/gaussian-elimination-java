@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 public class Leitor
 {
-	private BufferedReader arquivo;
+	protected BufferedReader arquivo;
 
 	public Leitor(String arq) throws Exception
 	{
@@ -42,4 +42,32 @@ public class Leitor
 			}
 			return ret;
      }
+
+     public boolean equals(Object obj)
+     {
+		 if(this == obj)
+		 	return true;
+		 if(obj == null)
+		 	return false;
+		 if(this.getClass() != obj.getClass())
+		 	return false;
+
+		 Leitor leitor = (Leitor)obj;
+
+		 if(!leitor.arquivo.equals(this.arquivo))
+		 	return false;
+		 return true;
+	 }
+
+	 public int hashCode()
+	 {
+		int ret = 345;
+		ret = ret*7 + this.arquivo.hashCode();
+		return ret;
+	 }
+
+	 public String toString()
+	 {
+		 return this.arquivo.toString();
+	 }
 }
