@@ -49,29 +49,6 @@ public class Resolvedor
 
 	public void tirarZeroDiag() throws Exception
 	{
-		/*try
-		{
-			for(int linha = 0; linha < this.qtdEquacoes; linha++)
-				if(this.sistema.getValor(linha, linha) == 0)
-				{
-					double valor = 0;
-					int outraLinha = 0;
-					for(int i = 0; i < this.qtdEquacoes; i++)
-					{
-						valor = this.sistema.getValor(i, linha);
-						if(valor == 0)
-							continue;
-						outraLinha = i;
-						break;
-					}
-					this.sistema.setValor(outraLinha, linha, 0);
-					this.sistema.setValor(linha, linha, valor);
-				}
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("Erro ao trocar valores");
-		}*/
 		try
 		{
 			double[] primeiraLinha = this.sistema.getLinha(0);
@@ -156,5 +133,40 @@ public class Resolvedor
 		catch(Exception e)
 		{} // sei que não vai dar erro
 		return ret;
+	}
+
+	public int hashCode()
+	{
+		int ret = 356;
+		ret = ret * 7 + this.sistema.hashCode();
+		ret = ret * 7 + new Integer(this.qtdEquacoes).hashCode();
+
+		if(ret < 0)
+			ret = -ret;
+		return ret;
+	}
+
+	public String toString()
+	{
+		String ret = sistema.toString() + "\n";
+		ret += "Quantidade de Equacoes: " + this.qtdEquacoes;
+		return ret;
+	}
+
+	public boolean equals(Object obj)
+	{
+		if(this == obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(this.getClass() != obj.getClass())
+			return false;
+
+		Resolvedor res = (Resolvedor) obj;
+		if(!(this.sistema.equals(res.sistema)))
+			return false;
+		if(this.qtdEquacoes != res.qtdEquacoes)
+			return false;
+		return true;
 	}
 }

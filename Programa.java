@@ -17,7 +17,6 @@ public class Programa
 			while(!leitor.fimDoArquivo())
 			{
 				Matriz sistema = new Matriz(leitor.getSistema());
-				System.out.println(sistema);
 				Resolvedor resolvedor = new Resolvedor(sistema);
 				if(!resolvedor.isSolucionavel())
 				{
@@ -26,9 +25,7 @@ public class Programa
 				}
 				if (resolvedor.temZeroDiag())
 					resolvedor.tirarZeroDiag();
-				System.out.println(sistema);
 				resolvedor.resolver();
-				System.out.println(sistema);
 				System.out.println(cont+1 + "a Equação: \n " + resolvedor.resultado() + "\n");
 
 				cont++;
