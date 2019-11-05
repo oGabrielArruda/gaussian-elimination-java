@@ -20,7 +20,8 @@ public class Programa
 				Resolvedor resolvedor = new Resolvedor(sistema);
 				if(!resolvedor.isSolucionavel())
 				{
-					System.out.println("Sistema sem solução!");
+					System.out.println(cont+1 + "a Equação: sem solução");
+					cont++;
 					continue;
 				}
 				if (resolvedor.temZeroDiag())
@@ -32,6 +33,7 @@ public class Programa
 					catch(Exception erro)
 					{
 						System.out.println(cont+1 + "a Equação: sem solução");
+						cont++;
 						continue;
 					}
 				}
