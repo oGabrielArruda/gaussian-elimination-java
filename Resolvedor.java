@@ -49,13 +49,14 @@ public class Resolvedor
 
 	public void tirarZeroDiag() throws Exception
 	{
+		int vezes = 0;
 		try
 		{
-			while(temZeroDiag())
+			while(temZeroDiag() && vezes != this.qtdEquacoes)
 			{
 				double[] primeiraLinha = this.sistema.getLinha(0);
 
-				for(int linha = 0; linha<this.qtdEquacoes-1; linha++)
+				for(int linha = 0; linha < this.qtdEquacoes-1; linha++)
 				{
 					double[] deBaixo = this.sistema.getLinha(linha+1);
 					for(int coluna = 0; coluna < this.qtdEquacoes + 1; coluna++)
@@ -63,10 +64,12 @@ public class Resolvedor
 						this.sistema.setValor(linha, coluna, deBaixo[coluna]);
 					}
 				}
-
 				int ultimaLinha = this.qtdEquacoes - 1;
 				for(int coluna = 0; coluna < this.qtdEquacoes+1; coluna++)
 				this.sistema.setValor(ultimaLinha, coluna, primeiraLinha[coluna]);
+				vezes++;
+				if (vezes == this.qtdEquacoes)
+					throw new Exception("Sistema inválido");
 			}
 
 		}
@@ -74,7 +77,6 @@ public class Resolvedor
 		{
 			throw new Exception("Troca inválida");
 		}
-
 	}
 
 	public boolean temZeroDiag()

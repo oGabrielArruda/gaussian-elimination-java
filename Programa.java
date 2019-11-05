@@ -24,7 +24,18 @@ public class Programa
 					continue;
 				}
 				if (resolvedor.temZeroDiag())
-					resolvedor.tirarZeroDiag();
+				{
+					try
+					{
+						resolvedor.tirarZeroDiag();
+					}
+					catch(Exception erro)
+					{
+						System.out.println(cont+1 + "a Equação: sem solução");
+						continue;
+					}
+				}
+
 				resolvedor.resolver();
 				System.out.println(cont+1 + "a Equação: \n " + resolvedor.resultado() + "\n");
 
