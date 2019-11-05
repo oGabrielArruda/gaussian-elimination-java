@@ -51,20 +51,24 @@ public class Resolvedor
 	{
 		try
 		{
-			double[] primeiraLinha = this.sistema.getLinha(0);
-
-			for(int linha = 0; linha<this.qtdEquacoes-1; linha++)
+			while(temZeroDiag())
 			{
-				double[] deBaixo = this.sistema.getLinha(linha+1);
-				for(int coluna = 0; coluna < this.qtdEquacoes + 1; coluna++)
+				double[] primeiraLinha = this.sistema.getLinha(0);
+
+				for(int linha = 0; linha<this.qtdEquacoes-1; linha++)
 				{
-					this.sistema.setValor(linha, coluna, deBaixo[coluna]);
+					double[] deBaixo = this.sistema.getLinha(linha+1);
+					for(int coluna = 0; coluna < this.qtdEquacoes + 1; coluna++)
+					{
+						this.sistema.setValor(linha, coluna, deBaixo[coluna]);
+					}
 				}
+
+				int ultimaLinha = this.qtdEquacoes - 1;
+				for(int coluna = 0; coluna < this.qtdEquacoes+1; coluna++)
+				this.sistema.setValor(ultimaLinha, coluna, primeiraLinha[coluna]);
 			}
 
-			int ultimaLinha = this.qtdEquacoes - 1;
-			for(int coluna = 0; coluna < this.qtdEquacoes+1; coluna++)
-				this.sistema.setValor(ultimaLinha, coluna, primeiraLinha[coluna]);
 		}
 		catch(Exception erro)
 		{
