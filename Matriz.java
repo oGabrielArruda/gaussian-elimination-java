@@ -29,6 +29,18 @@ public class Matriz implements Cloneable
 		return this.elem[linha][coluna];
 	}
 
+	public double[] getLinha(int linha) throws Exception
+	{
+		if (linha < 0)
+			throw new Exception("Paramêtro inválido!");
+		double[] aux = new double[this.colunas];
+		for (int coluna = 0; coluna < this.colunas; coluna++)
+		{
+			aux[coluna] = this.elem[linha][coluna];
+		}
+		return aux;
+	}
+
 	public int getLinhas()
 	{
 		return this.elem.length;
