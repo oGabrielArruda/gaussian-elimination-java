@@ -6,12 +6,27 @@ public class Resolvedor
 	protected Matriz sistema;
 	protected int qtdEquacoes;
 
+	/**
+	Construtor da classe Resolvedor.
+	Passa-se um objeto da classe Matriz, contendo o sistema de equacões
+	Em seguida seta os atributos sistema e qtdEquacoes
+	@param sistema instância da classe Matriz
+	@throws Exception caso ô objeto passado seja nulo
+	*/
 	public Resolvedor(Matriz sistema)
 	{
 		this.sistema = sistema;
 		this.qtdEquacoes = sistema.getLinhas();
 	}
 
+	/**
+	Verifica se o sistema tem solução.
+	Percorre todas as as equações do sistema, e as dividem pelas outras equações
+	Caso as divisões tenham todo o mesmo valor, retorna-se false
+	Senão, retorna-se true
+	@return true se as divisões tiverem pelo menos 1 valor diferente, false se tiverem todos valores iguais
+	@throws Exception caso ocorra algum problema ao resgatar os valores
+	*/
     public boolean isSolucionavel() throws Exception // divisões
     {
 		for(int linha = 0; linha < this.qtdEquacoes-1; linha++)
@@ -79,6 +94,10 @@ public class Resolvedor
 		}
 	}
 
+	/**
+	Verifica se há zeros na diagonal principal da matriz.
+	@return true caso exista 0 na diagonal principal, false senão existir
+	*/
 	public boolean temZeroDiag()
 	{
 		try
@@ -120,12 +139,22 @@ public class Resolvedor
 		}
 	}
 
+	/**
+	Chama o método que deixa as colunas com o valor 0.
+	É feito um for para percorrer todas equações do sistema.
+	Para cada equação, chama-se o método que seta os valores da coluna 'i' com 0.
+	Consequentemente, a equação será resolvida.
+	*/
 	public void resolver() throws Exception
 	{
 			for(int i = 0; i < this.qtdEquacoes; i++)
 				this.setZerosColuna(i);
 	}
 
+	/**
+	String com os resultados do sistema.
+	@return a string com os resultados.
+	*/
 	public String resultado() throws Exception
 	{
 		String ret = "";
@@ -141,6 +170,10 @@ public class Resolvedor
 		return ret;
 	}
 
+	/**
+	Calcula e devolve o código hash da instância.
+	@return o código hash.
+	*/
 	public int hashCode()
 	{
 		int ret = 356;
@@ -152,6 +185,10 @@ public class Resolvedor
 		return ret;
 	}
 
+	/**
+	Transforma e retorna a instância da classe em formato de String
+	@return string com os valores da instância
+	*/
 	public String toString()
 	{
 		String ret = sistema.toString() + "\n";
@@ -159,6 +196,11 @@ public class Resolvedor
 		return ret;
 	}
 
+	/**
+	Verifica se a instância é igual a outra.
+	@param obj objeto a ser comparado com a instância
+	@return true se os atributos forem iguais, false se não forem
+	*/
 	public boolean equals(Object obj)
 	{
 		if(this == obj)
