@@ -43,6 +43,18 @@ public class Leitor
 			return ret;
      }
 
+     public void fecharArquivo() throws Exception
+     {
+		try
+		{
+			this.arquivo.close();
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro ao fechar o arquivo");
+		}
+	 }
+
      public boolean equals(Object obj)
      {
 		 if(this == obj)

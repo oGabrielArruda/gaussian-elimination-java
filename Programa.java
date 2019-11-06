@@ -16,8 +16,9 @@ public class Programa
 
 			while(!leitor.fimDoArquivo())
 			{
-				Matriz m = new Matriz(leitor.getSistema());
-				Matriz sistema = new Matriz(m); // clona-se a matriz lida, para não estragar seus valores
+				Matriz mat = new Matriz(leitor.getSistema());
+				Matriz sistema = new Matriz(mat); // clona-se a matriz para não estragar os valores da equação
+
 				Resolvedor resolvedor = new Resolvedor(sistema);
 				if(!resolvedor.isSolucionavel())
 				{
@@ -44,6 +45,7 @@ public class Programa
 
 				cont++;
 			}
+			leitor.fecharArquivo();
 		}
 		catch(Exception ex)
 		{

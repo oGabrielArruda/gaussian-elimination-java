@@ -156,6 +156,10 @@ public class Matriz implements Cloneable
 		if (modelo == null)
 			throw new Exception("Parametro inválido");
 
+		this.elem = new double[modelo.linhas][modelo.colunas];
+		this.linhas = modelo.linhas;
+		this.colunas = modelo.colunas;;
+
 		for (int i = 0; i < this.linhas; i++)
 		{
 			for(int j = 0; j < this.colunas; j++)
@@ -163,8 +167,6 @@ public class Matriz implements Cloneable
 				this.elem[i][j] = modelo.elem[i][j];
 			}
 		}
-		this.linhas = modelo.linhas;
-		this.colunas = modelo.colunas;
 	}
 
 	/**
