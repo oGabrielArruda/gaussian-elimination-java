@@ -8,10 +8,10 @@ public class Resolvedor
 
 	/**
 	Construtor da classe Resolvedor.
-	Passa-se um objeto da classe Matriz, contendo o sistema de equacıes
+	Passa-se um objeto da classe Matriz, contendo o sistema de equac√µes
 	Em seguida seta os atributos sistema e qtdEquacoes
-	@param sistema inst‚ncia da classe Matriz
-	@throws Exception caso Ù objeto passado seja nulo
+	@param sistema inst√¢ncia da classe Matriz
+	@throws Exception caso √¥ objeto passado seja nulo
 	*/
 	public Resolvedor(Matriz sistema)
 	{
@@ -20,14 +20,14 @@ public class Resolvedor
 	}
 
 	/**
-	Verifica se o sistema tem soluÁ„o.
-	Percorre todas as as equaÁıes do sistema, e as dividem pelas outras equaÁıes
-	Caso as divisıes tenham todo o mesmo valor, retorna-se false
-	Sen„o, retorna-se true
-	@return true se as divisıes tiverem pelo menos 1 valor diferente, false se tiverem todos valores iguais
+	Verifica se o sistema tem solu√ß√£o.
+	Percorre todas as as equa√ß√µes do sistema, e as dividem pelas outras equa√ß√µes
+	Caso as divis√µes tenham todo o mesmo valor, retorna-se false
+	Sen√£o, retorna-se true
+	@return true se as divis√µes tiverem pelo menos 1 valor diferente, false se tiverem todos valores iguais
 	@throws Exception caso ocorra algum problema ao resgatar os valores
 	*/
-    public boolean isSolucionavel() throws Exception // divisıes
+    public boolean isSolucionavel() throws Exception // divis√µes
     {
 		for(int linha = 0; linha < this.qtdEquacoes-1; linha++)
 		{
@@ -43,13 +43,13 @@ public class Resolvedor
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("Problema ao verificar se È solucion·vel");
+						throw new Exception("Problema ao verificar se √© solucion√°vel");
 					}
 				}
 
 				double primeiroValor = jaFoi[0];
 				int qtsVezes = 1;
-				for(int i = 1; i < jaFoi.length; i++) // verifica se as divisıes tiveram
+				for(int i = 1; i < jaFoi.length; i++) // verifica se as divis√µes tiveram
 				{									  // o mesmo resultado
 					if(primeiroValor == jaFoi[i])
 						qtsVezes++;
@@ -86,20 +86,20 @@ public class Resolvedor
 				for(int coluna = 0; coluna < this.qtdEquacoes+1; coluna++)
 				this.sistema.setValor(ultimaLinha, coluna, primeiraLinha[coluna]);
 				vezes++;
-				if (vezes == this.qtdEquacoes)
-					throw new Exception("Sistema inv·lido");
 			}
+			if (vezes == this.qtdEquacoes)
+			    throw new Exception("Sistema inv√°lido");
 
 		}
 		catch(Exception erro)
 		{
-			throw new Exception("Troca inv·lida");
+			throw new Exception("Troca inv√°lida");
 		}
 	}
 
 	/**
-	Verifica se h· zeros na diagonal principal da matriz.
-	@return true caso exista 0 na diagonal principal, false sen„o existir
+	Verifica se h√° zeros na diagonal principal da matriz.
+	@return true caso exista 0 na diagonal principal, false sen√£o existir
 	*/
 	public boolean temZeroDiag()
 	{
@@ -119,15 +119,15 @@ public class Resolvedor
 	/**
 	Seta os valores da coluna como 0, menos os pertencentes a diagonal principal.
 	Primeiro, se o valor na diagonal principal for diferente de 1, transforma-se ele em 1, dividindo a linha pel valor a ser transformado
-	ApÛs ter certeza de que o valor da diagonal principal È 1, setamos 0 nas demais linhas
-	Fazemos isso pegando o valor da linha, e somamos com a linha que implementamos 1 (diagonal principal) multiplicada pelo inverso do valor que ser· transformado
-	Ao fazer isso com todas as linhas e com todas as colunas, consequentemente o mÈtodo encontrar· o resultado
+	Ap√≥s ter certeza de que o valor da diagonal principal √© 1, setamos 0 nas demais linhas
+	Fazemos isso pegando o valor da linha, e somamos com a linha que implementamos 1 (diagonal principal) multiplicada pelo inverso do valor que ser√° transformado
+	Ao fazer isso com todas as linhas e com todas as colunas, consequentemente o m√©todo encontrar√° o resultado
 	*/
 	public void setZerosColuna(int col) throws Exception
 	{
 		double x = this.sistema.getValor(col,col);
 
-		// verifica se o valor da diagonal principal È 1
+		// verifica se o valor da diagonal principal √© 1
 		if(x != 1.0)
 		{
 			int linha = col;
@@ -151,10 +151,10 @@ public class Resolvedor
 	}
 
 	/**
-	Chama o mÈtodo que deixa as colunas com o valor 0.
-	… feito um for para percorrer todas equaÁıes do sistema.
-	Para cada equaÁ„o, chama-se o mÈtodo que seta os valores da coluna 'i' com 0.
-	Consequentemente, a equaÁ„o ser· resolvida.
+	Chama o m√©todo que deixa as colunas com o valor 0.
+	√â feito um for para percorrer todas equa√ß√µes do sistema.
+	Para cada equa√ß√£o, chama-se o m√©todo que seta os valores da coluna 'i' com 0.
+	Consequentemente, a equa√ß√£o ser√° resolvida.
 	*/
 	public void resolver() throws Exception
 	{
@@ -177,13 +177,13 @@ public class Resolvedor
 			}
 		}
 		catch(Exception e)
-		{} // sei que n„o vai dar erro
+		{} // sei que n√£o vai dar erro
 		return ret;
 	}
 
 	/**
-	Calcula e devolve o cÛdigo hash da inst‚ncia.
-	@return o cÛdigo hash.
+	Calcula e devolve o c√≥digo hash da inst√¢ncia.
+	@return o c√≥digo hash.
 	*/
 	public int hashCode()
 	{
@@ -197,8 +197,8 @@ public class Resolvedor
 	}
 
 	/**
-	Transforma e retorna a inst‚ncia da classe em formato de String
-	@return string com os valores da inst‚ncia
+	Transforma e retorna a inst√¢ncia da classe em formato de String
+	@return string com os valores da inst√¢ncia
 	*/
 	public String toString()
 	{
@@ -208,9 +208,9 @@ public class Resolvedor
 	}
 
 	/**
-	Verifica se a inst‚ncia È igual a outra.
-	@param obj objeto a ser comparado com a inst‚ncia
-	@return true se os atributos forem iguais, false se n„o forem
+	Verifica se a inst√¢ncia √© igual a outra.
+	@param obj objeto a ser comparado com a inst√¢ncia
+	@return true se os atributos forem iguais, false se n√£o forem
 	*/
 	public boolean equals(Object obj)
 	{
