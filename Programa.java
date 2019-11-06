@@ -16,7 +16,8 @@ public class Programa
 
 			while(!leitor.fimDoArquivo())
 			{
-				Matriz sistema = new Matriz(leitor.getSistema());
+				Matriz m = new Matriz(leitor.getSistema());
+				Matriz sistema = new Matriz(m); // clona-se a matriz lida, para não estragar seus valores
 				Resolvedor resolvedor = new Resolvedor(sistema);
 				if(!resolvedor.isSolucionavel())
 				{
