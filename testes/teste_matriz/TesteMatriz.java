@@ -172,5 +172,64 @@ public class TesteMatriz
 		else
 			System.out.println("A MATRIZ NÃO É IGUAL A MATRIZ");
 		System.out.println();
+
+		System.out.println("Teste hashcode:");
+		int val = matriz.hashCode();
+		//System.out.println(""+val);
+		System.out.println();
+
+		System.out.println("Teste construtor de cópia:");
+		// passando uma matriz nula
+		Matriz maisUmaMatriz = null;
+		try
+		{
+			matriz = new Matriz(maisUmaMatriz);
+			System.out.println("Conseguiu clonar um objeto nulo");
+		}
+		catch(Exception erro)
+		{
+			System.out.println("Erro: " + erro.getMessage());
+		}
+
+		// passando uma matriz instanciada
+		try
+		{
+			matriz = new Matriz(outraMatriz);
+			System.out.println("Conseguiu clonar um objeto instanciado");
+		}
+		catch(Exception erro)
+		{
+			System.out.println("Erro: " + erro.getMessage());
+		}
+		System.out.println();
+
+		System.out.println("Alteração de Valores após fazer a cópia");
+		try
+		{
+			System.out.println("Valor MATRIZ: " + matriz.getValor(0, 0));
+			System.out.println("Valor OUTRAMATRIZ: " + outraMatriz.getValor(0, 0));
+			System.out.println("Alterando o valor da OUTRAMATRIZ...");
+			outraMatriz.setValor(0,0,2.0);
+			System.out.println("Valor MATRIZ: " + matriz.getValor(0, 0));
+			System.out.println("Valor OUTRAMATRIZ: " + outraMatriz.getValor(0, 0));
+		}
+		catch(Exception erro)
+		{ } // sei que não vai dar erro
+		System.out.println();
+
+		System.out.println("Teste clone");
+		outraMatriz = (Matriz)matriz.clone();
+		System.out.println("Alteração de valores após clonar");
+		try
+		{
+			System.out.println("Valor MATRIZ: " + matriz.getValor(0, 0));
+			System.out.println("Valor OUTRAMATRIZ: " + outraMatriz.getValor(0, 0));
+			System.out.println("Alterando o valor da MATRIZ...");
+			matriz.setValor(0,0,2.0);
+			System.out.println("Valor MATRIZ: " + matriz.getValor(0, 0));
+			System.out.println("Valor OUTRAMATRIZ: " + outraMatriz.getValor(0, 0));
+		}
+		catch(Exception erro)
+		{ }
 	}
 }
