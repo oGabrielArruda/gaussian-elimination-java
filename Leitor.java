@@ -2,10 +2,18 @@ import java.util.StringTokenizer;
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class Leitor
 {
 	protected BufferedReader arquivo;
 
+	/**
+	Construtor da classe leitor.
+	Vê se a string passada como parâmetro é válida, senão for, lança excessão
+	Caso esteja válido, instancia um novo BufferedReader
+	@throws Exception caso o nome do arquivo seja inválido
+	*/
 	public Leitor(String arq) throws Exception
 	{
 		if (arq == null || arq == "")
@@ -13,13 +21,23 @@ public class Leitor
 		this.arquivo = new BufferedReader (new FileReader (arq));
 	}
 
+	/**
+	Vê se o arquivo terminou.
+	@return true se a leitura chegou a final do arquivo, false senão chegou
+	*/
 	public boolean fimDoArquivo() throws Exception
 	{
-		/*if(this.arquivo == null)
-			throw new Exception("Arquivo nulo");*/
 		return !this.arquivo.ready();
 	}
 
+	/**
+	Lê os valores do arquivo e os coloca em uma matriz.
+	Primeiro, pega-se o primeiro valor que é a quantidade de equações do sistema
+	Depois, instância-se uma nova matriz com a quantdade de linhas igual a quantidade de equações
+	E a quantidade de colunas igual a quantidade de equações mais um
+	Enfim, as linhas seguintes são lidas e são inseridas nas respectivas linhas e colunas na matriz
+	@return a matriz com as equações
+	*/
 	 public double[][] getSistema() throws Exception // retorna uma matriz
      {
 			int qtdEquacoes = Integer.parseInt(arquivo.readLine());
@@ -43,6 +61,10 @@ public class Leitor
 			return ret;
      }
 
+	/**
+	Fecha o arquivo que está sendo lido.
+	@throws Exception caso o arquivo esteja inválido
+	*/
      public void fecharArquivo() throws Exception
      {
 		try
@@ -55,6 +77,10 @@ public class Leitor
 		}
 	 }
 
+	/**
+	Vê se a instância é igual a outra.
+	@param obj instância a ser comparada
+	*/
      public boolean equals(Object obj)
      {
 		 if(this == obj)
@@ -71,6 +97,10 @@ public class Leitor
 		 return true;
 	 }
 
+	/**
+	Calcula o código hash da instância.
+	@return valor do código
+	*/
 	 public int hashCode()
 	 {
 		int ret = 345;
@@ -78,8 +108,11 @@ public class Leitor
 		return ret;
 	 }
 
+	/**
+	Retorna a instância em formato de string.
+	*/
 	 public String toString()
 	 {
-		 return this.arquivo.toString();
+		return this.arquivo.lines().collect(Collectors.joining());
 	 }
 }
