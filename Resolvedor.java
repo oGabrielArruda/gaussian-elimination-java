@@ -62,6 +62,9 @@ public class Resolvedor
 	}
 
 
+	/**
+
+	*/
 	public void tirarZeroDiag() throws Exception
 	{
 		int vezes = 0;
@@ -112,6 +115,14 @@ public class Resolvedor
 		return false;
 
 	}
+
+	/**
+	Seta os valores da coluna como 0, menos os pertencentes a diagonal principal.
+	Primeiro, se o valor na diagonal principal for diferente de 1, transforma-se ele em 1, dividindo a linha pel valor a ser transformado
+	Após ter certeza de que o valor da diagonal principal é 1, setamos 0 nas demais linhas
+	Fazemos isso pegando o valor da linha, e somamos com a linha que implementamos 1 (diagonal principal) multiplicada pelo inverso do valor que será transformado
+	Ao fazer isso com todas as linhas e com todas as colunas, consequentemente o método encontrará o resultado
+	*/
 	public void setZerosColuna(int col) throws Exception
 	{
 		double x = this.sistema.getValor(col,col);
