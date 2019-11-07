@@ -63,7 +63,10 @@ public class Resolvedor
 
 
 	/**
-
+	Retira os zeros da diagonal principal da matriz.
+	O método faz com que as linhas "subam" uma posição.
+	A subida é repetida até que não existam zeros na diagonal principal.
+	@throws Exception caso seja tirar todos os zeros da diagoal
 	*/
 	public void tirarZeroDiag() throws Exception
 	{
