@@ -1,6 +1,11 @@
 import java.util.StringTokenizer;
 import java.io.*;
 
+/**
+A classe Resolvedor resolve um sistema de equações baseado no método de Gauss.
+Usa-se como base uma matriz representando o sistema de equações
+@author Gabriel Alves de Arruda & Nouani Gabriel Sanches
+*/
 public class Resolvedor
 {
 	protected Matriz sistema;

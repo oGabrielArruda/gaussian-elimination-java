@@ -1,3 +1,8 @@
+/**
+A classe matriz representa uma matriz propriamente dita.
+Tem como métodos get's e set's de valores.
+@author Gabriel Alves de Arruda & Nouani Gabriel Sanches
+*/
 public class Matriz implements Cloneable
 {
 	protected double elem[][];

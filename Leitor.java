@@ -3,7 +3,11 @@ import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-
+/**
+A classe leitor retorna matrizes lidas de um arquivo texto
+tendo como base, o nome do arquivo passado para o construtor.
+@author Gabriel Alves de Arruda & Nouani Gabriel Sanches
+*/
 public class Leitor
 {
 	protected BufferedReader arquivo;
