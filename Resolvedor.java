@@ -126,7 +126,7 @@ public class Resolvedor
 	Fazemos isso pegando o valor da linha, e somamos com a linha que implementamos 1 (diagonal principal) multiplicada pelo inverso do valor que será transformado
 	Ao fazer isso com todas as linhas e com todas as colunas, consequentemente o método encontrará o resultado
 	*/
-	public void setZerosColuna(int col) throws Exception
+	private void setZerosColuna(int col) throws Exception
 	{
 		double x = this.sistema.getValor(col,col);
 

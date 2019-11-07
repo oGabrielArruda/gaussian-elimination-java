@@ -175,7 +175,7 @@ public class TesteMatriz
 
 		System.out.println("Teste hashcode:");
 		int val = matriz.hashCode();
-		//System.out.println(""+val);
+		System.out.println(""+val);
 		System.out.println();
 
 		System.out.println("Teste construtor de cópia:");
